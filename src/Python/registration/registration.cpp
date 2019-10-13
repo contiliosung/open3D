@@ -92,7 +92,7 @@ void pybind_registration_classes(py::module &m) {
                                                                      rmse, itr);
                  }),
                  "relative_fitness"_a = 1e-6, "relative_rmse"_a = 1e-6,
-                 "max_iteration"_a = 30)
+                 "max_iteration"_a = 30, "threshold" = 1e-3)
             .def_readwrite(
                     "relative_fitness",
                     &registration::ICPConvergenceCriteria::relative_fitness_,
@@ -136,7 +136,7 @@ void pybind_registration_classes(py::module &m) {
                      return new registration::RANSACConvergenceCriteria(
                              max_iteration, max_validation);
                  }),
-                 "max_iteration"_a = 1000, "max_validation"_a = 1000)
+                 "max_iteration"_a = 2000, "max_validation"_a = 2000)
             .def_readwrite(
                     "max_iteration",
                     &registration::RANSACConvergenceCriteria::max_iteration_,
